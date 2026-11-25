@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>悦己志 · 女生日常美学与灵感实验室</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="site-header">
+      <div class="brand-tag">YUEJIZHI · 日常美学实验室</div>
+      <h1 class="brand-title">悦己志 · 女生灵感空间</h1>
+      <p class="brand-subtitle">审美自测 · 情绪盲盒 · 护肤决策 · 自律工作台 · 周末灵感</p>
+    </header>
+
+    <nav class="nav-bar" aria-label="功能导航">
+      <button type="button" class="nav-tab active" data-target="panel-style">审美风格自测</button>
+      <button type="button" class="nav-tab" data-target="panel-mood">情绪盲盒</button>
+      <button type="button" class="nav-tab" data-target="panel-decision">买前必看</button>
+      <button type="button" class="nav-tab" data-target="panel-workbench">自律工作台</button>
+      <button type="button" class="nav-tab" data-target="panel-weekend">周末灵感</button>
+    </nav>
+
+    <main>
+      <!-- 模块一：审美风格自测 -->
+      <section id="panel-style" class="module-panel active">
+        <div class="card">
+          <div class="section-head">
+            <h2 class="section-title">个人审美与四季色彩自测</h2>
+            <p class="section-desc">10 道日常穿衣与妆容小问题，测出你的本命氛围感与显白配色卡</p>
+          </div>
+
+          <div id="quiz-stage">
+            <div class="quiz-progress-wrap">
+              <span>当前进度</span>
+              <div class="progress-bar"><div id="quiz-q-fill" class="progress-fill"></div></div>
+              <strong id="quiz-q-num">1 / 10</strong>
+            </div>
+
+            <h3 id="quiz-q-title" class="quiz-q-title">题目加载中...</h3>
+            <div id="quiz-q-opts" class="quiz-options"></div>
+
+            <div class="action-row" style="justify-content: flex-start;">
+              <button id="quiz-prev-btn" type="button" class="btn btn-soft btn-sm" disabled>← 上一题</button>
+            </div>
+          </div>
+
+          <div id="quiz-result-wrap" style="display: none;">
+            <div class="quiz-result-card">
+              <div class="style-badge-row">
+                <span id="res-season" class="pill pill-rose">四季倾向</span>
+                <span id="res-tag" class="pill pill-sage">氛围标签</span>
+              </div>
+              <h3 id="res-style-name" class="result-style-name">风格名称</h3>
+              <p id="res-quote" class="result-quote"></p>
+
+              <div id="res-palette" class="palette-grid"></div>
+
+              <div class="info-grid-2">
+                <div class="sub-box">
+                  <h4>✨ 专属穿搭与妆容建议</h4>
+                  <p id="res-advice"></p>
+                </div>
+                <div class="sub-box">
+                  <h4>⚠️ 买衣服避雷提示</h4>
+                  <p id="res-avoid"></p>
+                </div>
+              </div>
+            </div>
+
+            <div class="action-row">
+              <button id="quiz-poster-btn" type="button" class="btn btn-rose">进入截图海报模式</button>
+              <button id="quiz-copy-btn" type="button" class="btn btn-outline">复制结果文案</button>
+              <button id="quiz-retry-btn" type="button" class="btn btn-soft">重新测试</button>
+            </div>
+
+            <div class="poster-exit">
+              <button id="poster-exit-btn" type="button" class="btn btn-soft btn-sm">退出截图模式</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 模块二：情绪盲盒与今日一签 -->
+      <section id="panel-mood" class="module-panel">
+        <div class="card">
+          <div class="section-head">
+            <h2 class="section-title">情绪盲盒与今日一签</h2>
+            <p class="section-desc">抽一支清醒治愈签文，再把今天的烦躁一键清零</p>
+          </div>
+
+          <div class="fortune-layout">
+            <div class="fortune-card">
+              <div>
+                <div id="fortune-no" class="fortune-no">第 01 签</div>
+                <h3 id="fortune-kw" class="fortune-keyword">稳住内核</h3>
+                <p id="fortune-text" class="fortune-text"></p>
+              </div>
+              <div>
+                <div class="fortune-lucky">
+                  <span><span id="fortune-color-dot" class="lucky-dot"></span>幸运色：<strong id="fortune-color-name"></strong></span>
+                  <span>幸运小物：<strong id="fortune-item"></strong></span>
+                </div>
+                <div class="action-row" style="margin-top: 16px;">
+                  <button id="fortune-draw-btn" type="button" class="btn btn-rose btn-sm">再抽一签</button>
+                  <button id="fortune-copy-btn" type="button" class="btn btn-outline btn-sm">复制签文发圈</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="calm-box">
+              <span class="pill pill-sage">轻量解压</span>
+              <div id="calm-count" class="calm-count">0</div>
+              <small style="color: var(--ink-taupe);">今日已清零烦躁次数</small>
+              <button id="calm-tap-btn" type="button" class="calm-tap-btn">烦躁清零</button>
+              <p id="calm-msg" class="calm-msg">点一下按钮，把不开心丢出宇宙</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 模块三：买前必看决策工具 -->
+      <section id="panel-decision" class="module-panel">
+        <div class="card">
+          <div class="section-head">
+            <h2 class="section-title">护肤成分自查与好物决策清单</h2>
+            <p class="section-desc">买前先查成分冲突，按预算和场景筛选高性价比不踩雷好物</p>
+          </div>
+
+          <h3 style="font-family: var(--font-serif); font-size: 1.05rem; margin-bottom: 10px;">1. 护肤成分叠加自查器</h3>
+          <div id="ing-chips" class="chip-group"></div>
+          <div id="checker-output" class="checker-result"></div>
+
+          <h3 style="font-family: var(--font-serif); font-size: 1.05rem; margin-bottom: 10px;">2. 精选好物决策库</h3>
+          <div class="filter-row">
+            <select id="filter-budget" class="select-box" style="max-width: 180px;">
+              <option value="all">全部预算</option>
+              <option value="low">百元内平替</option>
+              <option value="mid">100 - 300元进阶</option>
+              <option value="high">300元+ 口碑款</option>
+            </select>
+            <select id="filter-scene" class="select-box" style="max-width: 180px;">
+              <option value="all">全部场景</option>
+              <option value="skincare">护肤刚需</option>
+              <option value="dorm">宿舍 / 租房好物</option>
+              <option value="outfit">通勤穿搭</option>
+            </select>
+          </div>
+          <div id="goods-grid" class="goods-grid"></div>
+        </div>
+      </section>
+
+      <!-- 模块四：高颜值自律工作台 -->
+      <section id="panel-workbench" class="module-panel">
+        <div class="card">
+          <div class="section-head">
+            <h2 class="section-title">高颜值自律与变美工作台</h2>
+            <p class="section-desc">所有计时统计、倒计时与30天微习惯记录均自动保存在本地浏览器</p>
+          </div>
+
+          <div class="workbench-top">
+            <div class="pomo-box">
+              <div class="chip-group" style="justify-content: center; margin-bottom: 6px;">
+                <button type="button" class="chip-btn sage-active active pomo-mode-btn" data-mins="25">25分钟专注</button>
+                <button type="button" class="chip-btn sage-active pomo-mode-btn" data-mins="5">5分钟小憩</button>
+                <button type="button" class="chip-btn sage-active pomo-mode-btn" data-mins="15">15分钟长休</button>
+              </div>
+              <div id="pomo-time" class="pomo-time">25:00</div>
+              <p style="font-size: 0.84rem; color: var(--ink-taupe); margin-bottom: 12px;">
+                今日已完成番茄：<strong id="pomo-done" style="color: var(--rose);">0</strong> 个
+              </p>
+              <div style="display: flex; gap: 8px; justify-content: center;">
+                <button id="pomo-start-btn" type="button" class="btn btn-sage btn-sm">开始专注</button>
+                <button id="pomo-reset-btn" type="button" class="btn btn-soft btn-sm">重置</button>
+              </div>
+            </div>
+
+            <div class="countdown-box">
+              <h3 style="font-family: var(--font-serif); font-size: 1rem;">重要日子倒计时</h3>
+              <div class="countdown-form">
+                <input id="cd-title-input" type="text" class="input-field" placeholder="目标名称（如四六级）" maxlength="18">
+                <input id="cd-date-input" type="date" class="input-field" style="max-width: 140px;">
+                <button id="cd-add-btn" type="button" class="btn btn-rose btn-sm">添加</button>
+              </div>
+              <div id="countdown-list" class="countdown-list"></div>
+            </div>
+          </div>
+
+          <div class="habit-section">
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px;">
+              <h3 style="font-family: var(--font-serif); font-size: 1rem;">30 天变美与自律微习惯打卡</h3>
+              <span id="habit-summary" style="font-size: 0.84rem; color: var(--sage); font-weight: 600;"></span>
+            </div>
+            <div id="habit-grid" class="habit-grid"></div>
+            <div id="habit-dots" class="habit-dots" aria-label="30天打卡进度格"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 模块五：周末灵感盲盒 -->
+      <section id="panel-weekend" class="module-panel">
+        <div class="card">
+          <div class="section-head">
+            <h2 class="section-title">周末去哪玩灵感盲盒</h2>
+            <p class="section-desc">告别“周末不知道干嘛”，按预算、同行对象和心情抽取专属方案</p>
+          </div>
+
+          <div class="blindbox-controls">
+            <div>
+              <label for="bb-budget" class="select-label">预算区间</label>
+              <select id="bb-budget" class="select-box">
+                <option value="free">0元宅家 / 免费公园</option>
+                <option value="low" selected>百元内精致小聚</option>
+                <option value="treat">轻奢微醺犒劳自己</option>
+              </select>
+            </div>
+            <div>
+              <label for="bb-who" class="select-label">同行对象</label>
+              <select id="bb-who" class="select-box">
+                <option value="solo">一个人独处充电</option>
+                <option value="bestie" selected>和闺蜜逛吃拍照</option>
+                <option value="date">浪漫约会散步</option>
+              </select>
+            </div>
+            <div>
+              <label for="bb-mood" class="select-label">当下心情</label>
+              <select id="bb-mood" class="select-box">
+                <option value="chill">想放空发呆</option>
+                <option value="photo" selected>想出门拍大片</option>
+                <option value="food">想吃点好的</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="weekend-result">
+            <span class="pill pill-sand">今日周末盲盒</span>
+            <h3 id="bb-title" class="weekend-title">方案标题</h3>
+            <p id="bb-plan" class="section-desc" style="color: var(--ink-cocoa); margin-bottom: 14px;"></p>
+            <div class="info-grid-2">
+              <div class="sub-box">
+                <h4>📸 拍照出片技巧</h4>
+                <p id="bb-photo"></p>
+              </div>
+              <div class="sub-box">
+                <h4>👗 推荐穿搭公式</h4>
+                <p id="bb-outfit"></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="action-row">
+            <button id="bb-draw-btn" type="button" class="btn btn-rose">换一个周末灵感</button>
+            <button id="bb-copy-btn" type="button" class="btn btn-outline">复制方案发闺蜜 / 对象</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      悦己志 · 女生日常美学与灵感实验室 · 纯前端本地运行（可直接部署至 Cloudflare Pages）
+    </footer>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
